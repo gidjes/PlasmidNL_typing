@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Creating conda environments..."
+
+# environments
+conda env create -f plasmid_typing.yml
+conda env create -n CARD rgi
+conda env create -n mob_suite mob_suite
+conda env create -n mge_cluster mge_cluster
+
+echo "All environments have been created!"
+
+echo "Downloading databases"
+conda run -n plasmid_typing download-db.sh
+conda run -n plasmid_typing amrfinder -u
+cd data/databases
+git clone https://git@bitbucket.org/genomicepidemiology/resfinder.git
+cd ../../
