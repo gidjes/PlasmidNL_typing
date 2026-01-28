@@ -1,14 +1,16 @@
+#!/usr/bin/env python
+
 import os
 import pandas as pd
 from functools import partial
 from multiprocessing import Pool, set_start_method
-import type_plasmid
-import typing_functions as tf
 import argparse
+
+from . import type_plasmid, typing_functions
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(
+    parser = argparse.ArgumentParser(ß
         description="Run PlasmidNL typing pipeline (in parallel)"
     )
 
@@ -33,7 +35,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def main(in_dir: str, n_jobs: int, run_card: bool = True, skip_amrfinder: bool = True):
+def main():
     print(
         """                                                                                                            
         PlasmidNL Typing pipeline        
@@ -57,6 +59,11 @@ def main(in_dir: str, n_jobs: int, run_card: bool = True, skip_amrfinder: bool =
                 .......::.. .::  :..:.    
     """
     )
+    args = parse_args()
+    in_dir = args.input
+    n_jobs = args.jobs
+    run_card = args.card
+    skip_amrfinder = args.skip_amrfinder
 
     inputs = os.listdir(in_dir)
     inputs = [input.split(".fa")[0] for input in inputs]
@@ -73,7 +80,7 @@ def main(in_dir: str, n_jobs: int, run_card: bool = True, skip_amrfinder: bool =
         pool.close()
         pool.join()
 
-    all_final_dfs = [tf.safe_final_dfs(input) for input in inputs]
+    all_final_dfs = [typing_functions.safe_final_dfs(input) for input in inputs]
     final_df = pd.concat(all_final_dfs)
     final_df.to_csv("PlasmidNL_report.csv", sep=";", index=False)
     failed_df = final_df.loc[final_df["replicon"] == "FAILED"]
@@ -92,5 +99,4 @@ def main(in_dir: str, n_jobs: int, run_card: bool = True, skip_amrfinder: bool =
 if __name__ == "__main__":
     # Set multiprocessing parameters
     set_start_method("spawn")
-    args = parse_args()
-    main(args.input, args.jobs, args.card, args.skip_amrfinder)
+    main()

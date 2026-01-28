@@ -37,40 +37,6 @@ def run_cmd(cmd, log, step_name, plasmid):
     log.flush()
 
 
-def lsf_hpcify_cmd(
-    bash_string: str, log_file: str, threads: int = 6, mem: int = 6, time: int = 15
-) -> str:
-    """Function that takes an input string and prefixes all the LSF stuff
-    This way the function can be easily commented out when shared outside
-    the RIVM (or even IDS, since idk their queue and stuff).
-
-    Parameters
-    ----------
-    bash_string : str
-        bash command to run
-    log_file : str
-        path/to/log/file.log
-    threads : int, optional
-        threads to use, by default 6
-    mem : int, optional
-        memory to use in G, by default 6
-    time : int, optional
-        maximum runtime in minutes, by default 15
-
-    Returns
-    -------
-    subprocess_cmd : str
-        Input string with all the requested LSF configuration prefixed
-    """
-
-    hpc_string = (
-        f"bsub -q bio -K -oo {log_file} -n {threads} -R 'rusage[mem={mem}G]' -W {time}"
-    )
-    list_string = [hpc_string, bash_string]
-    subprocess_cmd = " ".join(list_string)
-    return subprocess_cmd
-
-
 def summarise_plasmid_data(data: str, log) -> pd.DataFrame:
     log.write("combining outputs...\n")
     # Acquire (and flatten) replicon output
@@ -158,7 +124,7 @@ def summarise_plasmid_data(data: str, log) -> pd.DataFrame:
 
 def safe_final_dfs(plasmid: str) -> pd.DataFrame:
     if os.path.isfile(f"output/{plasmid}/final_report.csv"):
-        final_report = pd.read_csv(f"output/{plasmid}/final_report.csv")
+        final_report = pd.read_csv(f"output/{plasmid}/final_report.csv", sep=";")
     else:
         final_report = pd.DataFrame(
             {

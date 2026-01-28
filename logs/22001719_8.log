@@ -172,3 +172,80 @@ combining outputs...
 Getting length + GC%
 Highlighting Carbapenemases
 ===== END 22001719_8 =====
+
+===== START 22001719_8 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+combining outputs...
+Getting length + GC%
+Highlighting Carbapenemases
+===== END 22001719_8 =====
+
+===== START 22001719_8 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+combining outputs...
+Getting length + GC%
+Highlighting Carbapenemases
+
+FATAL ERROR: [Errno 13] Permission denied: 'output/22001719_8/final_report.csv'
+PIPELINE FAILED FOR THIS SAMPLE
+
+===== START 22001719_8 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+combining outputs...
+Getting length + GC%
+Highlighting Carbapenemases
+
+FATAL ERROR: [Errno 13] Permission denied: 'output/22001719_8/final_report.csv'
+PIPELINE FAILED FOR THIS SAMPLE
+
+===== START 22001719_8 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+combining outputs...
+Getting length + GC%
+Highlighting Carbapenemases
+
+FATAL ERROR: [Errno 13] Permission denied: 'output/22001719_8/final_report.csv'
+PIPELINE FAILED FOR THIS SAMPLE
+
+===== START 22001719_8 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+combining outputs...
+Getting length + GC%
+Highlighting Carbapenemases
+
+FATAL ERROR: [Errno 13] Permission denied: 'output/22001719_8/final_report.csv'
+PIPELINE FAILED FOR THIS SAMPLE
+
+===== START 22001719_8 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+[card] already completed
+combining outputs...
+Getting length + GC%
+Highlighting Carbapenemases
+
+FATAL ERROR: [Errno 13] Permission denied: 'output/22001719_8/final_report.csv'
+PIPELINE FAILED FOR THIS SAMPLE

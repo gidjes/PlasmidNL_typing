@@ -1,7 +1,7 @@
 import os
 import pandas as pd
-import typing_functions as tf
 import time
+from . import typing_functions as tf
 
 
 def safe_read_csv(filepath, sep=";", retries=4, delay=60):
@@ -71,13 +71,13 @@ def process_amrfinder(plasmid, ignore_amr=False):
             "Gene symbol": "gene",
             "Contig id": "Contig",
         }
-        amrfinder_df.rename(columns=rename_dict, inplace=True)
+        amrfinder_df = amrfinder_df.rename(columns=rename_dict)
 
         if ignore_amr:
             amrfinder_df.loc[amrfinder_df["type"] != "AMR"]
 
-        amrfinder_df["seq"] = plasmid
-        amrfinder_df["db"] = "amrfinder"
+        amrfinder_df.loc[:, "seq"] = plasmid
+        amrfinder_df[:, "db"] = "amrfinder"
         amrfinder_df = amrfinder_df.loc[
             (amrfinder_df["Identity"] >= 95) & (amrfinder_df["Coverage"] >= 100)
         ]
@@ -193,11 +193,11 @@ def process_resfinder(plasmid):
         resfinder_df = all_data[
             ["Resistance gene", "Identity", "Coverage", "Contig", "Position in contig"]
         ]
-        resfinder_df[["Start", "Stop"]] = [
-            x.split("..") for x in resfinder_df["Position in contig"]
-        ]
-        resfinder_df.drop("Position in contig", axis=1, inplace=True)
-        resfinder_df[["Start", "Stop"]] = resfinder_df[["Start", "Stop"]].apply(
+        resfinder_df.loc[:, ["Start", "Stop"]] = resfinder_df[
+            "Position in contig"
+        ].str.split("..", expand=True)
+        resfinder_df = resfinder_df.drop("Position in contig", axis=1)
+        resfinder_df.loc[:, ["Start", "Stop"]] = resfinder_df[["Start", "Stop"]].apply(
             pd.to_numeric
         )
         rename_dict = {"Resistance gene": "gene"}

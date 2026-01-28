@@ -7,13 +7,13 @@ Pipeline to type the genome of plasmid fastas files using several tools and conv
 Unfortunately, several tools used in this pipeline are incompatible in the same environment. So several seperate conda environments have to be created in order to get all parts to work. 
 
 ```
-git clone ..
-cd ..
+git clone https://gitlab.com/mmb-umcu/plasmidnl_typing.git
+cd plasmidnl_typing
 
 chmod +x scripts/init.sh
 ./scripts/init.sh
 
-conda activate plasmid_typing
+conda activate plasmidnl_typing
 ```
 
 # Preperation
@@ -110,11 +110,17 @@ The AMR genes found by AMRFinderPlus can be ignored in the final output by using
 ## CARD [7]
 The Comprehensive Antibiotic Resistance Database (CARD) can be additionally run by using the --card flag, as the AMR databases are not fully redundant, for a comprehensive AMR overview. When overlapping hits are found, ResFinder hits are preferentially used. So, only additional genes detected are used in the final output.
 
-Citations
+# Citations
 [1] PlasmidFinder and pMLST: in silico detection and typing of plasmids. Carattoli A, Zankari E, Garcia-Fernandez A, Volby Larsen M, Lund O, Villa L, Aarestrup FM, Hasman H. Antimicrob. Agents Chemother. 2014. April 28th. [Epub ahead of print]
+
 [2] Robertson, James, and John H E Nash. “MOB-suite: software tools for clustering, reconstruction and typing of plasmids from draft assemblies.” Microbial genomics vol. 4,8 (2018): e000206. doi:10.1099/mgen.0.000206
+
 [3] Robertson, James et al. “Universal whole-sequence-based plasmid typing and its utility to prediction of host range and epidemiological surveillance.” Microbial genomics vol. 6,10 (2020): mgen000435. doi:10.1099/mgen.0.000435
+
 [4] Arredondo-Alonso S, Gladstone RA, Pöntinen AK, Gama JA, Schürch AC, Lanza VF, et al. Mge-cluster: a reference-free approach for typing bacterial plasmids. NAR Genom Bioinform. 2023 Sep;5(3):lqad066.
+
 [5] Bortolaia V, Kaas RF, Ruppe E, Roberts MC, Schwarz S, Cattoir V, et al. ResFinder 4.0 for predictions of phenotypes from genotypes. Journal of Antimicrobial Chemotherapy. 2020 Aug 11. PMID: 32780112 doi: 10.1093/jac/dkaa345 [Epub ahead of print]
+
 [6] Feldgarden M, Brover V, Gonzalez-Escalona N, Frye JG, Haendiges J, Haft DH, Hoffmann M, Pettengill JB, Prasad AB, Tillman GE, Tyson GH, Klimke W. AMRFinderPlus and the Reference Gene Catalog facilitate examination of the genomic links among antimicrobial resistance, stress response, and virulence. Sci Rep. 2021 Jun 16;11(1):12728. doi: 10.1038/s41598-021-91456-0. PMID: 34135355; PMCID: PMC8208984.
+
 [7] Alcock et al. 2023. CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. Nucleic Acids Research, 51, D690-D699 [PMID 36263822]

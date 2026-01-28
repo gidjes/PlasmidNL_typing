@@ -121,3 +121,67 @@ combining outputs...
 Getting length + GC%
 Highlighting Carbapenemases
 ===== END 22001611_2 =====
+
+===== START 22001611_2 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+combining outputs...
+Getting length + GC%
+Highlighting Carbapenemases
+===== END 22001611_2 =====
+
+===== START 22001611_2 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+combining outputs...
+Getting length + GC%
+Highlighting Carbapenemases
+===== END 22001611_2 =====
+
+===== START 22001611_2 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+combining outputs...
+Getting length + GC%
+Highlighting Carbapenemases
+===== END 22001611_2 =====
+
+===== START 22001611_2 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+
+FATAL ERROR: (slice(None, None, None), 'db')
+PIPELINE FAILED FOR THIS SAMPLE
+
+===== START 22001611_2 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+
+FATAL ERROR: (slice(None, None, None), 'db')
+PIPELINE FAILED FOR THIS SAMPLE
+
+===== START 22001611_2 =====
+[plasmidfinder] already completed
+[mob_suite] already completed
+[mge_cluster] already completed
+[resfinder] already completed
+[amrfinder] already completed
+[card] already completed
+
+FATAL ERROR: (slice(None, None, None), 'db')
+PIPELINE FAILED FOR THIS SAMPLE

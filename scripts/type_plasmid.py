@@ -1,7 +1,7 @@
-import typing_functions as tf
-import resistence_profile as rp
 import os
 import sys
+from . import typing_functions as tf
+from . import resistence_profile as rp
 
 
 def process_plasmid(

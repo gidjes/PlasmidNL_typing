@@ -9,8 +9,7 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "type_plasmids=scripts.main:main",  # Adjust the module and function accordingly
+            "type_plasmids = scripts.main:main",
         ],
     },
-    install_requires=["pandas"],
 )
