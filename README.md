@@ -1,4 +1,4 @@
-# Plasmid Typing Pipeline
+# PlasmidNL Typing Pipeline
 
 Pipeline to type the genome of plasmid fastas files using several tools and convert it into a single report file. This report can be put into the shiny_upload_template.csv to have consistent outputs with the [PlasmidNL Shiny application](https://apps.rivm.nl/bsr-ids-ienv/plasmidnl/), also available as [standalone R/Shiny](https://gitlab.com/gidjes/plasmidnl).
 
@@ -58,6 +58,20 @@ Use this flag to ignore AMRFinderPlus-derived resistance genes.
 Example:
 
     --skip_amrfinder
+
+------------------------------------------------------------------------
+
+### `--custom_mge_scheme`
+
+Use a custom mge-cluster scheme.
+
+By default, an mge-cluster scheme developed using [Dutch CPO isolates](http://dx.doi.org/10.5281/ZENODO.18920264) will be used.\
+Use this flag to use your own scheme instead. Make sure to place the files of scheme in data/mge_scheme_custom
+
+Example:
+
+    --skip_amrfinder
+
 
 ------------------------------------------------------------------------
 
@@ -137,3 +151,7 @@ The [Comprehensive Antibiotic Resistance Database (CARD)](https://github.com/arp
 [[6](https://www.nature.com/articles/s41598-021-91456-0)] Feldgarden M, Brover V, Gonzalez-Escalona N, Frye JG, Haendiges J, Haft DH, Hoffmann M, Pettengill JB, Prasad AB, Tillman GE, Tyson GH, Klimke W. AMRFinderPlus and the Reference Gene Catalog facilitate examination of the genomic links among antimicrobial resistance, stress response, and virulence. Sci Rep. 2021 Jun 16;11(1):12728. doi: 10.1038/s41598-021-91456-0. PMID: 34135355; PMCID: PMC8208984.
 
 [[7](https://academic.oup.com/nar/article/51/D1/D690/6764414)] Alcock et al. 2023. CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. Nucleic Acids Research, 51, D690-D699 [PMID 36263822]
+
+## Citation
+If you are using this pipeline, please cite:
+[![DOI](https://zenodo.org/badge/1243350889.svg)](https://doi.org/10.5281/zenodo.20286501)

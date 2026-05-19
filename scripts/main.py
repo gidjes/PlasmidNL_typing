@@ -15,41 +15,41 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--input",
         "-i",
+        "--input",
         required=True,
         help="Input directory containing plasmid FASTA files",
     )
 
     parser.add_argument(
-        "--card", "-c", action="store_true", help="Run CARD resistance typing"
+        "-c", "--card", action="store_true", help="Run CARD resistance typing"
     )
 
     parser.add_argument(
-        "--skip_amrfinder",
         "-sa",
+        "--skip_amrfinder",
         action="store_true",
         help="Ignore resistance genes from AMRFinderPlus",
     )
 
     parser.add_argument(
-        "--custom_mge_scheme",
         "-mge",
+        "--custom_mge_scheme",
         action="store_true",
         help="Use a custom mge-cluster scheme",
     )
 
     parser.add_argument(
-        "--jobs",
         "-n",
+        "--jobs",
         type=int,
         default=1,
         help="Number of parallel workers (default: 1)",
     )
 
     parser.add_argument(
-        "--rerun-failed",
         "-rf",
+        "--rerun-failed",
         action="store_true",
         help="Rerun only sequences listed in failed_sequences.csv",
     )
@@ -132,8 +132,17 @@ def main():
     # -------------------------------------------------
     all_final_dfs = [typing_functions.safe_final_dfs(input) for input in all_inputs]
     final_df = pd.concat(all_final_dfs)
+    final_df = typing_functions.determine_upper_group(
+        final_df, "replicon", "replicon_family"
+    )
+    final_df = typing_functions.determine_upper_group(final_df, "amr", "amr_classes")
+    final_df = typing_functions.determine_upper_group(
+        final_df, "metal", "metal_classes"
+    )
+    final_df = typing_functions.correct_names(final_df)
     final_df.to_csv("PlasmidNL_report.csv", sep=";", index=False)
     failed_df = final_df.loc[final_df["replicon"] == "FAILED"]
+
     if not failed_df.empty:
         failed_df.to_csv("failed_sequences.csv", sep=";", index=False)
         n_failed = len(failed_df)

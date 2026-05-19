@@ -389,3 +389,83 @@ def get_seqlength_and_gc(sample, log, in_dir="input"):
         gc_content = (gc_count / total_length) * 100
 
     return total_length, gc_content
+
+
+# ------------------------------
+# 5. Final output file cleaning
+# ------------------------------
+def determine_upper_group(
+    df_in: pd.DataFrame, col_items: str, col_groups: str
+) -> pd.DataFrame:
+    df = df_in.copy()
+
+    # Create lookup dictionary
+    if col_items == "replicon":
+        family_df = pd.read_csv("data/replicon_classifications.csv", sep=";")
+        items = col_items
+        classification = col_groups
+    elif col_items in ["amr", "metal"]:
+        family_df = pd.read_csv("data/gene_db.csv", sep=";")
+        items = "Gene"
+        classification = "Class"
+    else:
+        print("invalid column detected, skipping step...")
+        return df
+
+    group_map = dict(zip(family_df[items], family_df[classification]))
+
+    # Match the families
+    def map_groups(value):
+        # Handle NaN / None / empty strings
+        if pd.isna(value) or not str(value).strip():
+            return ""
+
+        groups = {
+            group_map[v.strip()]
+            for v in str(value).split(",")
+            if v.strip() in group_map
+        }
+
+        return ",".join(sorted(groups))
+
+    df[col_groups] = df[col_items].apply(map_groups)
+
+    return df
+
+
+def correct_names(df_in: pd.DataFrame) -> pd.DataFrame:
+    df = df_in.copy()
+
+    # Create lookup dictionary
+    family_df = pd.read_csv("data/gene_db.csv", sep=";")
+    correction_map = dict(zip(family_df["Gene"], family_df["Gene_corrected"]))
+
+    def correct_values(value):
+        # Handle empty values
+        if pd.isna(value) or not str(value).strip():
+            return ""
+
+        corrected = []
+
+        for v in str(value).split(","):
+            v = v.strip()
+
+            # Replace if mapping exists
+            new_value = correction_map.get(v)
+
+            # Skip missing mappings if desired
+            if new_value is not None and str(new_value).strip():
+                corrected.append(new_value)
+
+        # Remove duplicates while preserving order
+        corrected = list(dict.fromkeys(corrected))
+        corrected.sort()
+
+        return ",".join(corrected)
+
+    df["amr"] = df["amr"].apply(correct_values)
+    return df
+
+
+if __name__ == "__main__":
+    print("Helper functions to type plasmids")
