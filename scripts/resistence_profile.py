@@ -54,21 +54,20 @@ def process_amrfinder(plasmid, ignore_amr=False):
     else:
         amrfinder_df = data[
             [
-                "Gene symbol",
-                "Element subtype",
-                "% Coverage of reference sequence",
-                "% Identity to reference sequence",
+                "Element symbol",
+                "Subtype",
+                "% Coverage of reference",
+                "% Identity to reference",
                 "Contig id",
                 "Start",
                 "Stop",
             ]
         ]
-
         rename_dict = {
-            "% Identity to reference sequence": "Identity",
-            "% Coverage of reference sequence": "Coverage",
-            "Element subtype": "type",
-            "Gene symbol": "gene",
+            "% Identity to reference": "Identity",
+            "% Coverage of reference": "Coverage",
+            "Subtype": "type",
+            "Element symbol": "gene",
             "Contig id": "Contig",
         }
         amrfinder_df = amrfinder_df.rename(columns=rename_dict)
@@ -77,7 +76,7 @@ def process_amrfinder(plasmid, ignore_amr=False):
             amrfinder_df.loc[amrfinder_df["type"] != "AMR"]
 
         amrfinder_df.loc[:, "seq"] = plasmid
-        amrfinder_df[:, "db"] = "amrfinder"
+        amrfinder_df.loc[:, "db"] = "amrfinder"
         amrfinder_df = amrfinder_df.loc[
             (amrfinder_df["Identity"] >= 95) & (amrfinder_df["Coverage"] >= 100)
         ]
@@ -85,6 +84,7 @@ def process_amrfinder(plasmid, ignore_amr=False):
             by=["Coverage", "Identity"], ascending=[False, False], inplace=True
         )
         amrfinder_df.drop_duplicates(subset=["gene"], inplace=True, keep="first")
+
         return amrfinder_df
 
 
@@ -295,9 +295,10 @@ def remove_overlapping(df: pd.DataFrame):
 
 
 def combine_finder_reports(plasmid, resfinder_df, amrfinder_df, card_df=pd.DataFrame()):
-    combined_report = pd.concat(
-        [resfinder_df, amrfinder_df, card_df], ignore_index=True
-    )
+
+    dfs = [resfinder_df, amrfinder_df, card_df]
+    dfs = [df for df in dfs if not df.empty]
+    combined_report = pd.concat(dfs, ignore_index=True)
     combined_report_filtered = remove_overlapping(combined_report)
     combined_report_filtered.to_csv(
         f"output/{plasmid}/resistance_report.csv",

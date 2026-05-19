@@ -235,11 +235,10 @@ def remove_overlapping(replicon_df: pd.DataFrame):
 
     # Apply the process_group function to each group
     df_filtered = (
-        replicon_df.groupby("contig_name", group_keys=False, as_index=False, sort=False)
-        .apply(process_group)
+        replicon_df.groupby("contig_name", group_keys=False, sort=False)
+        .apply(process_group, include_groups=False)
         .reset_index(drop=True)
     )
-
     return df_filtered
 
 

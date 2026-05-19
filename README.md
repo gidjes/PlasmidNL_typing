@@ -91,11 +91,11 @@ parallel jobs:
 ## PlasmidFinder [[1](https://pmc.ncbi.nlm.nih.gov/articles/PMC4068535/)]
 Runs [PlasmidFinder](https://cge.food.dtu.dk/services/PlasmidFinder/) on the input sequences and runs a subsequent script to extract replicon data.
 
-## MOB-typer [[2]((https://pmc.ncbi.nlm.nih.gov/articles/PMC6159552/) ), [3](https://pubmed.ncbi.nlm.nih.gov/32969786/)]
+## MOB-typer [[2](https://pmc.ncbi.nlm.nih.gov/articles/PMC6159552/), [3](https://pubmed.ncbi.nlm.nih.gov/32969786/)]
 MOB-typer from [MOB-suite](https://github.com/phac-nml/mob-suite) is run to determine plasmid mobility.
 
 ## mge-cluster [[4](https://academic.oup.com/nargab/article/5/3/lqad066/7222077)]
-Plasmids are clustered using [mge-cluster](https://gitlab.com/sirarredondo/mge-cluster). Currently it applies a mge-cluster constructed from Dutch plasmids obtained through the surveillance for carbapenemase-producing organisms. 
+Plasmids are clustered using [mge-cluster](https://gitlab.com/sirarredondo/mge-cluster). Currently it applies a mge-cluster constructed from Dutch plasmids obtained through the surveillance for [carbapenemase-producing organisms](http://dx.doi.org/10.5281/ZENODO.18920264). 
 
 ## ResFinder [[5](https://pmc.ncbi.nlm.nih.gov/articles/PMC8914360/)]
 Resistance genes are annotated using [ResFinder](https://genepi.food.dtu.dk/resfinder). Two additional tools can be run for their resistance gene content (see below). However, for overlapping hits, ResFinder will be preferentially used.
@@ -105,6 +105,7 @@ Resistance genes are annotated using [ResFinder](https://genepi.food.dtu.dk/resf
 - AMR
 - Virulence
 - Stress
+
 The AMR genes found by AMRFinderPlus can be ignored in the final output by using the --skip_amrfinder flag
 
 ## CARD [[7](https://academic.oup.com/nar/article/51/D1/D690/6764414)]

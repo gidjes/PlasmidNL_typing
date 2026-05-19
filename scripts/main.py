@@ -40,6 +40,13 @@ def parse_args():
         help="Number of parallel workers (default: 1)",
     )
 
+    parser.add_argument(
+        "--rerun-failed",
+        "-rf",
+        action="store_true",
+        help="Rerun only sequences listed in failed_sequences.csv",
+    )
+
     return parser.parse_args()
 
 
@@ -72,9 +79,34 @@ def main():
     n_jobs = args.jobs
     run_card = args.card
     skip_amrfinder = args.skip_amrfinder
+    rerun_failed = args.rerun_failed
 
-    inputs = os.listdir(in_dir)
-    inputs = [input.split(".fa")[0] for input in inputs]
+    # -------------------------------------------------
+    # Determine inputs
+    # -------------------------------------------------
+    all_inputs = os.listdir(in_dir)
+    all_inputs = [input.split(".fa")[0] for input in all_inputs]
+    if rerun_failed:
+        failed_file = "failed_sequences.csv"
+
+        if not os.path.exists(failed_file):
+            raise FileNotFoundError(
+                f"{failed_file} not found. Cannot rerun failed plasmids."
+            )
+
+        failed_df = pd.read_csv(failed_file, sep=";")
+
+        # assuming the sequence/sample name column is called "input"
+        inputs = failed_df["Plasmid"].tolist()
+
+        print(f"Rerunning {len(inputs)} failed plasmids")
+
+    else:
+        inputs = all_inputs
+
+    # -------------------------------------------------
+    # Run pipeline
+    # -------------------------------------------------
     with Pool(processes=n_jobs) as pool:
         pool.map(
             partial(
@@ -85,10 +117,11 @@ def main():
             ),
             inputs,
         )
-        pool.close()
-        pool.join()
 
-    all_final_dfs = [typing_functions.safe_final_dfs(input) for input in inputs]
+    # -------------------------------------------------
+    # Process results
+    # -------------------------------------------------
+    all_final_dfs = [typing_functions.safe_final_dfs(input) for input in all_inputs]
     final_df = pd.concat(all_final_dfs)
     final_df.to_csv("PlasmidNL_report.csv", sep=";", index=False)
     failed_df = final_df.loc[final_df["replicon"] == "FAILED"]
@@ -98,6 +131,9 @@ def main():
         print(
             f"{n_failed} plasmids failed in the pipeline. Check log files to troubleshoot."
         )
+    elif os.path.isfile("failed_sequences.csv"):
+        os.remove("failed_sequences.csv")
+        print("No more failed sequences in data.")
 
     print(
         f"{len(final_df)} plasmids processed.\nThank you for using the PlasmidNL typing pipeline"
