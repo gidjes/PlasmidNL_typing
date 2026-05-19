@@ -10,7 +10,7 @@ from . import type_plasmid, typing_functions
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(ß
+    parser = argparse.ArgumentParser(
         description="Run PlasmidNL typing pipeline (in parallel)"
     )
 
