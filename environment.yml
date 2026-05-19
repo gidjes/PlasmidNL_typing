@@ -1,4 +1,4 @@
-name: plasmid_typing
+name: plasmidnl_typing
 channels:
 - conda-forge
 - bioconda

@@ -1,6 +1,6 @@
 # Plasmid Typing Pipeline
 
-Pipeline to type the genome of plasmid fastas files using several tools and convert it into a single report file. This report can be put into the shiny_upload_template.csv to have consistent outputs with the PlasmidNL Shiny application [LINK].
+Pipeline to type the genome of plasmid fastas files using several tools and convert it into a single report file. This report can be put into the shiny_upload_template.csv to have consistent outputs with the [PlasmidNL Shiny application](https://apps.rivm.nl/bsr-ids-ienv/plasmidnl/), also available as [standalone R/Shiny](https://gitlab.com/gidjes/plasmidnl).
 
 # Installation
 
