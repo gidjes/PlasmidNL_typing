@@ -33,6 +33,13 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--custom_mge_scheme",
+        "-mge",
+        action="store_true",
+        help="Use a custom mge-cluster scheme",
+    )
+
+    parser.add_argument(
         "--jobs",
         "-n",
         type=int,
@@ -80,6 +87,7 @@ def main():
     run_card = args.card
     skip_amrfinder = args.skip_amrfinder
     rerun_failed = args.rerun_failed
+    custom_mge_scheme = args.custom_mge_scheme
 
     # -------------------------------------------------
     # Determine inputs
@@ -114,6 +122,7 @@ def main():
                 in_dir=in_dir,
                 ignore_amr=skip_amrfinder,
                 card=run_card,
+                custom_scheme=custom_mge_scheme,
             ),
             inputs,
         )

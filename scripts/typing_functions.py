@@ -316,7 +316,7 @@ def run_mob_suite(plasmid, in_dir, log):
 # ------------------------------
 # 4. mge-cluster Function
 # ------------------------------
-def run_mge_cluster(plasmid, in_dir, log):
+def run_mge_cluster(plasmid, in_dir, log, custom_scheme):
 
     outdir = os.path.join("output", plasmid, "mge_cluster")
 
@@ -333,9 +333,17 @@ def run_mge_cluster(plasmid, in_dir, log):
             log.write("[mge_cluster] already completed (empty)\n")
             return
 
+    if custom_scheme:
+        use_custom = "1"
+    else:
+        use_custom = "0"
+
     os.makedirs(outdir, exist_ok=True)
 
-    cmd = f"conda run -n mge-cluster " f"./scripts/run_mge.sh {plasmid} '{in_dir}'"
+    cmd = (
+        f"conda run -n mge-cluster "
+        f"./scripts/run_mge.sh {plasmid} '{in_dir}' {use_custom}"
+    )
 
     run_cmd(cmd, log, "mge_cluster", plasmid)
 

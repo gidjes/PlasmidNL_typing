@@ -74,17 +74,29 @@ Example:
 
 ------------------------------------------------------------------------
 
+### `--rerun-failed`
+
+Rerun failed sequence from previous run. Only works if the pipeline has
+been run previously.
+
+Example:
+
+    --rerun-failed
+
+------------------------------------------------------------------------
+
 ## Example Usage
 
 Run the pipeline with CARD typing enabled, AMRFinderPlus disabled, and 8
 parallel jobs:
 
+```bash
     type_plasmids \
       --input data/plasmids/ \
       --card \
       --skip_amrfinder \
       --jobs 8
-
+```
 
 # Components
 
@@ -95,7 +107,7 @@ Runs [PlasmidFinder](https://cge.food.dtu.dk/services/PlasmidFinder/) on the inp
 MOB-typer from [MOB-suite](https://github.com/phac-nml/mob-suite) is run to determine plasmid mobility.
 
 ## mge-cluster [[4](https://academic.oup.com/nargab/article/5/3/lqad066/7222077)]
-Plasmids are clustered using [mge-cluster](https://gitlab.com/sirarredondo/mge-cluster). Currently it applies a mge-cluster constructed from Dutch plasmids obtained through the surveillance for [carbapenemase-producing organisms](http://dx.doi.org/10.5281/ZENODO.18920264). 
+Plasmids are clustered using [mge-cluster](https://gitlab.com/sirarredondo/mge-cluster). In basic usage, it applies a mge-cluster scheme constructed from Dutch plasmids obtained through the surveillance for [carbapenemase-producing organisms](http://dx.doi.org/10.5281/ZENODO.18920264). However, a custom mge-cluster scheme can be placed in data/mge_scheme_custom and used through the `--custom_mge_scheme` flag
 
 ## ResFinder [[5](https://pmc.ncbi.nlm.nih.gov/articles/PMC8914360/)]
 Resistance genes are annotated using [ResFinder](https://genepi.food.dtu.dk/resfinder). Two additional tools can be run for their resistance gene content (see below). However, for overlapping hits, ResFinder will be preferentially used.

@@ -295,10 +295,14 @@ def remove_overlapping(df: pd.DataFrame):
 
 
 def combine_finder_reports(plasmid, resfinder_df, amrfinder_df, card_df=pd.DataFrame()):
-
     dfs = [resfinder_df, amrfinder_df, card_df]
-    dfs = [df for df in dfs if not df.empty]
-    combined_report = pd.concat(dfs, ignore_index=True)
+    non_empty = [df for df in dfs if not df.empty]
+
+    if non_empty:
+        combined_report = pd.concat(non_empty, ignore_index=True)
+    else:
+        combined_report = pd.DataFrame(columns=resfinder_df.columns)
+
     combined_report_filtered = remove_overlapping(combined_report)
     combined_report_filtered.to_csv(
         f"output/{plasmid}/resistance_report.csv",

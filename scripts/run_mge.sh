@@ -3,6 +3,7 @@
 # Read out arguments
 plasmid_name=$1
 in_dir=$2
+use_custom=$3
 
 # Check if output directories exists
 mkdir -p output/${1}/mge_cluster/
@@ -10,10 +11,17 @@ mkdir -p output/${1}/mge_cluster/
 # Set up mge input file
 echo ${in_dir}/${1}.fasta > output/${1}/mge_cluster/${1}_path.txt 
 
-# Run mge-cluster
-mge_cluster --existing --input output/${1}/mge_cluster/${1}_path.txt  --model_folder data/mge_model_RIVM --model_prefix mge-cluster --prefix ${1} --outdir output/${1}/mge_cluster/
+# Determine scheme directory
+if [ "$use_custom" = "1" ]; then
+    model_folder="data/mge_model_custom"
+else
+    model_folder="data/mge_model_CPO"
+fi
 
-echo mge_cluster --existing --input output/${1}/mge_cluster/${1}_path.txt  --model_folder data/mge_model_RIVM --model_prefix mge-cluster --prefix ${1} --outdir output/${1}/mge_cluster/
+# Run mge-cluster
+mge_cluster --existing --input output/${1}/mge_cluster/${1}_path.txt  --model_folder "$model_folder" --model_prefix mge-cluster --prefix ${1} --outdir output/${1}/mge_cluster/
+
+echo mge_cluster --existing --input output/${1}/mge_cluster/${1}_path.txt  --model_folder "$model_folder" --model_prefix mge-cluster --prefix ${1} --outdir output/${1}/mge_cluster/
 
 
 # If mge-cluster fails (e.g. no matching unitigs in fasta) generate NA output file
