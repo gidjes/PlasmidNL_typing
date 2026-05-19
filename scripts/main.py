@@ -15,21 +15,29 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--input", required=True, help="Input directory containing plasmid FASTA files"
+        "--input",
+        "-i",
+        required=True,
+        help="Input directory containing plasmid FASTA files",
     )
 
     parser.add_argument(
-        "--card", action="store_true", help="Run CARD resistance typing"
+        "--card", "-c", action="store_true", help="Run CARD resistance typing"
     )
 
     parser.add_argument(
         "--skip_amrfinder",
+        "-sa",
         action="store_true",
         help="Ignore resistance genes from AMRFinderPlus",
     )
 
     parser.add_argument(
-        "--jobs", type=int, default=1, help="Number of parallel workers (default: 1)"
+        "--jobs",
+        "-n",
+        type=int,
+        default=1,
+        help="Number of parallel workers (default: 1)",
     )
 
     return parser.parse_args()
@@ -71,7 +79,7 @@ def main():
         pool.map(
             partial(
                 type_plasmid.process_plasmid,
-                in_dir="input",
+                in_dir=in_dir,
                 ignore_amr=skip_amrfinder,
                 card=run_card,
             ),

@@ -34,7 +34,7 @@ cd data/databases
 git clone https://bitbucket.org/genomicepidemiology/resfinder_db/
 cd ../../
 
-# Install package into environment
+# Install local package
 conda run -n plasmidnl_typing pip install -e .
 
 echo "Setup complete."

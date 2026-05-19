@@ -79,7 +79,7 @@ Example:
 Run the pipeline with CARD typing enabled, AMRFinderPlus disabled, and 8
 parallel jobs:
 
-    python plasmidnl.py \
+    type_plasmids \
       --input data/plasmids/ \
       --card \
       --skip_amrfinder \
@@ -88,39 +88,39 @@ parallel jobs:
 
 # Components
 
-## Plasmidfinder [1]
-Runs [plasmidfinder] on the input sequences and runs a subsequent script to extract replicon data.
+## PlasmidFinder [[1](https://pmc.ncbi.nlm.nih.gov/articles/PMC4068535/)]
+Runs [PlasmidFinder](https://cge.food.dtu.dk/services/PlasmidFinder/) on the input sequences and runs a subsequent script to extract replicon data.
 
-## MOB-typer [2, 3]
-MOB-typer from MOB-suite is run to determine plasmid mobility.
+## MOB-typer [[2]((https://pmc.ncbi.nlm.nih.gov/articles/PMC6159552/) ), [3](https://pubmed.ncbi.nlm.nih.gov/32969786/)]
+MOB-typer from [MOB-suite](https://github.com/phac-nml/mob-suite) is run to determine plasmid mobility.
 
-## mge-cluster [4]
-Plasmids are clustered using mge-cluster. Currently it applies a mge-cluster constructed from Dutch plasmids obtained through the surveillance for carbapenemase-producing organisms. 
+## mge-cluster [[4](https://academic.oup.com/nargab/article/5/3/lqad066/7222077)]
+Plasmids are clustered using [mge-cluster](https://gitlab.com/sirarredondo/mge-cluster). Currently it applies a mge-cluster constructed from Dutch plasmids obtained through the surveillance for carbapenemase-producing organisms. 
 
-## ResFinder [5]
-Resitance genes are annotated using ResFinder. Two additional tools can be run for their resistance gene content (see below). However, for overlapping hits, ResFinder will be preferentially used.
+## ResFinder [[5](https://pmc.ncbi.nlm.nih.gov/articles/PMC8914360/)]
+Resistance genes are annotated using [ResFinder](https://genepi.food.dtu.dk/resfinder). Two additional tools can be run for their resistance gene content (see below). However, for overlapping hits, ResFinder will be preferentially used.
 
-## AMRFinderPlus [6]
-AMRFinderPlus is run for their extended databases:
+## AMRFinderPlus [[6](https://www.nature.com/articles/s41598-021-91456-0)]
+[AMRFinderPlus](https://github.com/ncbi/amr) is run for their extended databases:
 - AMR
 - Virulence
 - Stress
 The AMR genes found by AMRFinderPlus can be ignored in the final output by using the --skip_amrfinder flag
 
-## CARD [7]
-The Comprehensive Antibiotic Resistance Database (CARD) can be additionally run by using the --card flag, as the AMR databases are not fully redundant, for a comprehensive AMR overview. When overlapping hits are found, ResFinder hits are preferentially used. So, only additional genes detected are used in the final output.
+## CARD [[7](https://academic.oup.com/nar/article/51/D1/D690/6764414)]
+The [Comprehensive Antibiotic Resistance Database (CARD)](https://github.com/arpcard) can be additionally run by using the --card flag, as the AMR databases are not fully redundant, for a comprehensive AMR overview. When overlapping hits are found, ResFinder hits are preferentially used. So, only additional genes detected are used in the final output.
 
 # Citations
-[1] PlasmidFinder and pMLST: in silico detection and typing of plasmids. Carattoli A, Zankari E, Garcia-Fernandez A, Volby Larsen M, Lund O, Villa L, Aarestrup FM, Hasman H. Antimicrob. Agents Chemother. 2014. April 28th. [Epub ahead of print]
+[[1](https://pmc.ncbi.nlm.nih.gov/articles/PMC4068535/)] PlasmidFinder and pMLST: in silico detection and typing of plasmids. Carattoli A, Zankari E, Garcia-Fernandez A, Volby Larsen M, Lund O, Villa L, Aarestrup FM, Hasman H. Antimicrob. Agents Chemother. 2014. April 28th. [Epub ahead of print]
 
-[2] Robertson, James, and John H E Nash. “MOB-suite: software tools for clustering, reconstruction and typing of plasmids from draft assemblies.” Microbial genomics vol. 4,8 (2018): e000206. doi:10.1099/mgen.0.000206
+[[2](https://pmc.ncbi.nlm.nih.gov/articles/PMC6159552/)] Robertson, James, and John H E Nash. “MOB-suite: software tools for clustering, reconstruction and typing of plasmids from draft assemblies.” Microbial genomics vol. 4,8 (2018): e000206. doi:10.1099/mgen.0.000206
 
-[3] Robertson, James et al. “Universal whole-sequence-based plasmid typing and its utility to prediction of host range and epidemiological surveillance.” Microbial genomics vol. 6,10 (2020): mgen000435. doi:10.1099/mgen.0.000435
+[[3](https://pubmed.ncbi.nlm.nih.gov/32969786/)] Robertson, James et al. “Universal whole-sequence-based plasmid typing and its utility to prediction of host range and epidemiological surveillance.” Microbial genomics vol. 6,10 (2020): mgen000435. doi:10.1099/mgen.0.000435
 
-[4] Arredondo-Alonso S, Gladstone RA, Pöntinen AK, Gama JA, Schürch AC, Lanza VF, et al. Mge-cluster: a reference-free approach for typing bacterial plasmids. NAR Genom Bioinform. 2023 Sep;5(3):lqad066.
+[[4](https://academic.oup.com/nargab/article/5/3/lqad066/7222077)] Arredondo-Alonso S, Gladstone RA, Pöntinen AK, Gama JA, Schürch AC, Lanza VF, et al. Mge-cluster: a reference-free approach for typing bacterial plasmids. NAR Genom Bioinform. 2023 Sep;5(3):lqad066.
 
-[5] Bortolaia V, Kaas RF, Ruppe E, Roberts MC, Schwarz S, Cattoir V, et al. ResFinder 4.0 for predictions of phenotypes from genotypes. Journal of Antimicrobial Chemotherapy. 2020 Aug 11. PMID: 32780112 doi: 10.1093/jac/dkaa345 [Epub ahead of print]
+[[5](https://pmc.ncbi.nlm.nih.gov/articles/PMC8914360/)] Bortolaia V, Kaas RF, Ruppe E, Roberts MC, Schwarz S, Cattoir V, et al. ResFinder 4.0 for predictions of phenotypes from genotypes. Journal of Antimicrobial Chemotherapy. 2020 Aug 11. PMID: 32780112 doi: 10.1093/jac/dkaa345 [Epub ahead of print]
 
-[6] Feldgarden M, Brover V, Gonzalez-Escalona N, Frye JG, Haendiges J, Haft DH, Hoffmann M, Pettengill JB, Prasad AB, Tillman GE, Tyson GH, Klimke W. AMRFinderPlus and the Reference Gene Catalog facilitate examination of the genomic links among antimicrobial resistance, stress response, and virulence. Sci Rep. 2021 Jun 16;11(1):12728. doi: 10.1038/s41598-021-91456-0. PMID: 34135355; PMCID: PMC8208984.
+[[6](https://www.nature.com/articles/s41598-021-91456-0)] Feldgarden M, Brover V, Gonzalez-Escalona N, Frye JG, Haendiges J, Haft DH, Hoffmann M, Pettengill JB, Prasad AB, Tillman GE, Tyson GH, Klimke W. AMRFinderPlus and the Reference Gene Catalog facilitate examination of the genomic links among antimicrobial resistance, stress response, and virulence. Sci Rep. 2021 Jun 16;11(1):12728. doi: 10.1038/s41598-021-91456-0. PMID: 34135355; PMCID: PMC8208984.
 
-[7] Alcock et al. 2023. CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. Nucleic Acids Research, 51, D690-D699 [PMID 36263822]
+[[7](https://academic.oup.com/nar/article/51/D1/D690/6764414)] Alcock et al. 2023. CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. Nucleic Acids Research, 51, D690-D699 [PMID 36263822]

@@ -287,8 +287,8 @@ def remove_overlapping(df: pd.DataFrame):
     df = df.sort_values(by="Start").reset_index(drop=True)
     # Apply the process_group function to each group
     df_filtered = (
-        df.groupby("Contig", group_keys=False, as_index=False, sort=False)
-        .apply(process_group)
+        df.groupby("Contig", group_keys=False, sort=False)
+        .apply(process_group, include_groups=False)
         .reset_index(drop=True)
     )
     return df_filtered
