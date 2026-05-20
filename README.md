@@ -24,7 +24,7 @@ All fasta files should be placed in the input directory.
 
 The pipeline accepts the following command-line options.
 
-### `--input` (required)
+### `--input`, `-i` (required)
 
 Path to the input directory containing plasmid FASTA files.
 
@@ -34,7 +34,7 @@ Example:
 
 ------------------------------------------------------------------------
 
-### `--card`
+### `--card`, `-c`
 
 Enable CARD (Comprehensive Antibiotic Resistance Database) resistance
 typing.
@@ -48,7 +48,7 @@ Example:
 
 ------------------------------------------------------------------------
 
-### `--skip_amrfinder`
+### `--skip_amrfinder`, `-sa`
 
 Disable resistance gene detection using AMRFinderPlus.
 
@@ -61,7 +61,7 @@ Example:
 
 ------------------------------------------------------------------------
 
-### `--custom_mge_scheme`
+### `--custom_mge_scheme`, `-mge`
 
 Use a custom mge-cluster scheme.
 
@@ -75,7 +75,7 @@ Example:
 
 ------------------------------------------------------------------------
 
-### `--jobs`
+### `--jobs`, `-n`
 
 Number of parallel worker processes to use.
 
@@ -88,7 +88,7 @@ Example:
 
 ------------------------------------------------------------------------
 
-### `--rerun-failed`
+### `--rerun-failed`, `-rf`
 
 Rerun failed sequence from previous run. Only works if the pipeline has
 been run previously.
