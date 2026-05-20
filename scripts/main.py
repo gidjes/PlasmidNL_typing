@@ -140,6 +140,38 @@ def main():
         final_df, "metal", "metal_classes"
     )
     final_df = typing_functions.correct_names(final_df)
+    final_df["carba_alleles"] = typing_functions.get_carbapenemases(final_df, "amr")
+
+    final_df["AMR_plasmid"] = [
+        0 if (x == "") or (pd.isna(x)) else 1 for x in final_df["amr"]
+    ]
+
+    final_df["CP_plasmid"] = [
+        0 if (x == "") or (pd.isna(x)) else 1 for x in final_df["carba_alleles"]
+    ]
+    column_order = [
+        "Plasmid",
+        "replicon",
+        "replicon_family",
+        "mobility",
+        "mge_cluster",
+        "tsne1D",
+        "tsne2D",
+        "amr",
+        "amr_classes",
+        "AMR_plasmid",
+        "carba_allele",
+        "CP_plasmid",
+        "virulence",
+        "metal",
+        "metal_classes",
+        "biocide",
+        "heat",
+        "acid",
+        "bp_length",
+        "GC%",
+    ]
+    final_df = final_df.reindex(columns=column_order)
     final_df.to_csv("PlasmidNL_report.csv", sep=";", index=False)
     failed_df = final_df.loc[final_df["replicon"] == "FAILED"]
 

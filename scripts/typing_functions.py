@@ -416,17 +416,31 @@ def determine_upper_group(
 
     # Match the families
     def map_groups(value):
-        # Handle NaN / None / empty strings
+
+        # Handle empty values
         if pd.isna(value) or not str(value).strip():
             return ""
 
-        groups = {
-            group_map[v.strip()]
-            for v in str(value).split(",")
-            if v.strip() in group_map
-        }
+        groups = []
 
-        return ",".join(sorted(groups))
+        for v in str(value).split(","):
+            v = v.strip()
+
+            # Skip unknown values
+            if v not in group_map:
+                continue
+
+            mapped = group_map[v]
+
+            # Skip empty mappings
+            if pd.isna(mapped) or not str(mapped).strip():
+                continue
+
+            # Split mapped comma-separated groups
+            groups.extend(g.strip() for g in str(mapped).split(",") if g.strip())
+
+        # Unique + sorted
+        return ",".join(sorted(set(groups)))
 
     df[col_groups] = df[col_items].apply(map_groups)
 
@@ -465,6 +479,38 @@ def correct_names(df_in: pd.DataFrame) -> pd.DataFrame:
 
     df["amr"] = df["amr"].apply(correct_values)
     return df
+
+
+def get_carbapenemases(df: pd.DataFrame, gene_col: str) -> list[str]:
+    """
+    Extract carbapenemase genes from a given DataFrame column.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame containing gene information.
+    gene_col : str
+        Name of the column in `df` that contains gene data.
+
+    Returns
+    -------
+    List[str]
+        List of comma-separated carbapenemase alleles for each row.
+    """
+    # Load reference carbapenemase alleles
+    carba_alleles_df = pd.read_csv("data/bldb_carbapenemases.csv", sep=";")
+    carba_alleles = set(
+        carba_alleles_df["NAME"].dropna().tolist()
+        + carba_alleles_df["blaNAME"].dropna().tolist()
+    )
+
+    # Ensure gene column is safe to process
+    genes = df[gene_col].fillna("-").astype(str).str.split(",")
+
+    # Extract matching carbapenemase alleles
+    return [
+        ",".join([g for g in gene_list if g in carba_alleles]) for gene_list in genes
+    ]
 
 
 if __name__ == "__main__":
