@@ -369,7 +369,7 @@ def get_seqlength_and_gc(sample, log, in_dir="input"):
         (total_length, gc_content_percent)
     """
 
-    log.write("Getting length + GC%\n")
+    log.write("Getting length + GC_perc\n")
     fasta_path = os.path.join(in_dir, f"{sample}.fasta")
 
     total_length = 0

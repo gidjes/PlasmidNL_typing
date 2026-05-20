@@ -169,8 +169,9 @@ def main():
         "heat",
         "acid",
         "bp_length",
-        "GC%",
+        "GC_perc",
     ]
+
     final_df = final_df.reindex(columns=column_order)
     final_df.to_csv("PlasmidNL_report.csv", sep=";", index=False)
     failed_df = final_df.loc[final_df["replicon"] == "FAILED"]

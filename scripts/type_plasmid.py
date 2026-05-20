@@ -43,7 +43,7 @@ def process_plasmid(
             final_df = tf.summarise_plasmid_data(plasmid, log)
 
             # Add last pieces
-            final_df[["bp_length", "GC%"]] = tf.get_seqlength_and_gc(
+            final_df[["bp_length", "GC_perc"]] = tf.get_seqlength_and_gc(
                 plasmid, log, in_dir
             )
             final_df["carba_alleles"] = rp.get_carbapenemases(final_df, "amr", log)
