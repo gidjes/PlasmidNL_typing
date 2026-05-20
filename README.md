@@ -70,7 +70,7 @@ Use this flag to use your own scheme instead. Make sure to place the files of sc
 
 Example:
 
-    --skip_amrfinder
+    --custom_mge_scheme
 
 
 ------------------------------------------------------------------------
