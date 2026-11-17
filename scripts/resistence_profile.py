@@ -193,13 +193,12 @@ def process_resfinder(plasmid):
         resfinder_df = all_data[
             ["Resistance gene", "Identity", "Coverage", "Contig", "Position in contig"]
         ]
-        resfinder_df.loc[:, ["Start", "Stop"]] = resfinder_df[
-            "Position in contig"
-        ].str.split("..", expand=True)
-        resfinder_df = resfinder_df.drop("Position in contig", axis=1)
-        resfinder_df.loc[:, ["Start", "Stop"]] = resfinder_df[["Start", "Stop"]].apply(
-            pd.to_numeric
+        resfinder_df[["Start", "Stop"]] = (
+            resfinder_df["Position in contig"]
+            .str.split(r"\.\.", expand=True)
+            .astype(int)
         )
+        resfinder_df = resfinder_df.drop("Position in contig", axis=1)
         rename_dict = {"Resistance gene": "gene"}
         resfinder_df.rename(columns=rename_dict, inplace=True)
         resfinder_df["seq"] = plasmid
@@ -313,32 +312,22 @@ def combine_finder_reports(plasmid, resfinder_df, amrfinder_df, card_df=pd.DataF
 
 def get_carbapenemases(df: pd.DataFrame, gene_col: str, log) -> list[str]:
     """
-    Extract carbapenemase genes from a given DataFrame column.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        DataFrame containing gene information.
-    gene_col : str
-        Name of the column in `df` that contains gene data.
-
-    Returns
-    -------
-    List[str]
-        List of comma-separated carbapenemase alleles for each row.
+    Extract carbapenemase genes from each row of a DataFrame.
+    Returns one comma-separated string per row, or "" if there are no matches.
     """
     log.write("Highlighting Carbapenemases\n")
-    # Load reference carbapenemase alleles
+
     carba_alleles_df = pd.read_csv("data/bldb_carbapenemases.csv", sep=";")
     carba_alleles = set(
         carba_alleles_df["NAME"].dropna().tolist()
         + carba_alleles_df["blaNAME"].dropna().tolist()
     )
 
-    # Ensure gene column is safe to process
-    genes = df[gene_col].fillna("-").astype(str).str.split(",")
+    genes = df[gene_col].fillna("").astype(str).str.split(",").tolist()
 
-    # Extract matching carbapenemase alleles
-    return [
-        ",".join([g for g in gene_list if g in carba_alleles]) for gene_list in genes
+    CP_alleles = [
+        ",".join(g.strip() for g in gene_list if g.strip() in carba_alleles)
+        for gene_list in genes
     ]
+
+    return CP_alleles

@@ -44,60 +44,67 @@ def summarise_plasmid_data(data: str, log) -> pd.DataFrame:
         f"output/{data}/plasmidfinder/{data}_replicon.csv", sep=";"
     )
     replicons = replicon_df["plasmid"].values.tolist()
+    replicons.sort()
     replicon = ",".join(replicons)
 
     # Gather mobility data
     mobility_df = pd.read_csv(f"output/{data}/mob_suite/{data}_result.txt", sep="\t")
     mobility = mobility_df["predicted_mobility"].values[0]
 
-    # Get cluster and coordinates
-    if os.path.exists(f"output/{data}/mge_cluster/{data}_prediction.csv"):
-        mge_cluster = pd.read_csv(
-            filepath_or_buffer=f"output/{data}/mge_cluster/{data}_prediction.csv",
-            sep=",",
-        )
-        cluster = str(mge_cluster["Standard_Cluster"].values[0])
-        tsne1D = mge_cluster["tsne1D"].values[0]
-        tsne2D = mge_cluster["tsne2D"].values[0]
-    elif os.path.exists(f"output/{data}/mge_cluster/{data}_prediction.rtab"):
-        mge_cluster = pd.read_csv(
-            filepath_or_buffer=f"output/{data}/mge_cluster/{data}_prediction.rtab",
-            sep="\t",
-        )
-        unitigs = mge_cluster[f"{data}"].sum()
-        if unitigs == 0:
-            cluster = "-"
-            tsne1D = "-"
-            tsne2D = "-"
-        else:
-            print(f"Mge-cluster failed for isolates {data}. Please repeat...")
-            exit()
-    else:
-        print(f"Mge-cluster failed for isolates {data}. Please repeat...")
-        exit()
+    # # Get cluster and coordinates
+    # if os.path.exists(f"output/{data}/mge_cluster/{data}_prediction.csv"):
+    #     mge_cluster = pd.read_csv(
+    #         filepath_or_buffer=f"output/{data}/mge_cluster/{data}_prediction.csv",
+    #         sep=",",
+    #     )
+    #     cluster = str(mge_cluster["Standard_Cluster"].values[0])
+    #     tsne1D = mge_cluster["tsne1D"].values[0]
+    #     tsne2D = mge_cluster["tsne2D"].values[0]
+    # elif os.path.exists(f"output/{data}/mge_cluster/{data}_prediction.rtab"):
+    #     mge_cluster = pd.read_csv(
+    #         filepath_or_buffer=f"output/{data}/mge_cluster/{data}_prediction.rtab",
+    #         sep="\t",
+    #     )
+    #     unitigs = mge_cluster[f"{data}"].sum()
+    #     if unitigs == 0:
+    #         cluster = "-"
+    #         tsne1D = "-"
+    #         tsne2D = "-"
+    #     else:
+    #         print(f"Mge-cluster failed for isolates {data}. Please repeat...")
+    #         exit()
+    # else:
+    #     print(f"Mge-cluster failed for isolates {data}. Please repeat...")
+    #     exit()
 
     # Get gene data, split by type and flatten
     resistence = pd.read_csv(f"output/{data}/resistance_report.csv", sep=";")
     amr_genes = resistence["gene"].loc[resistence["type"] == "AMR"].values.tolist()
+    amr_genes.sort()
     amr = ",".join(amr_genes)
 
     metal_genes = resistence["gene"].loc[resistence["type"] == "METAL"].values.tolist()
+    metal_genes.sort()
     metal = ",".join(metal_genes)
 
     virulance_genes = (
         resistence["gene"].loc[resistence["type"] == "VIRULENCE"].values.tolist()
     )
+    virulance_genes.sort()
     virulence = ",".join(virulance_genes)
 
     biocide_genes = (
         resistence["gene"].loc[resistence["type"] == "BIOCIDE"].values.tolist()
     )
+    biocide_genes.sort()
     biocide = ",".join(biocide_genes)
 
     heat_genes = resistence["gene"].loc[resistence["type"] == "HEAT"].values.tolist()
+    heat_genes.sort()
     heat = ",".join(heat_genes)
 
     acid_genes = resistence["gene"].loc[resistence["type"] == "ACID"].values.tolist()
+    acid_genes.sort()
     acid = ",".join(acid_genes)
 
     # Make DataFrame
@@ -106,9 +113,9 @@ def summarise_plasmid_data(data: str, log) -> pd.DataFrame:
             "Plasmid": data,
             "replicon": replicon,
             "mobility": mobility,
-            "mge_cluster": cluster,
-            "tnse1D": tsne1D,
-            "tnse2D": tsne2D,
+            # "mge_cluster": cluster,
+            # "tsne1D": tsne1D,
+            # "tsne2D": tsne2D,
             "amr": amr,
             "virulence": virulence,
             "metal": metal,
@@ -132,8 +139,8 @@ def safe_final_dfs(plasmid: str) -> pd.DataFrame:
                 "replicon": "FAILED",
                 "mobility": "FAILED",
                 "mge_cluster": "FAILED",
-                "tnse1D": "FAILED",
-                "tnse2D": "FAILED",
+                "tsne1D": "FAILED",
+                "tsne2D": "FAILED",
                 "amr": "FAILED",
                 "virulence": "FAILED",
                 "metal": "FAILED",
@@ -153,6 +160,7 @@ def run_plasmidfinder(plasmid, in_dir, log):
     outdir = os.path.join("output", plasmid, "plasmidfinder")
     result = os.path.join(outdir, f"{plasmid}_replicon.csv")
     fasta = os.path.join(in_dir, f"{plasmid}.fasta")
+    database = os.path.join("data", "databases", "plasmidfinder_db")
 
     if os.path.exists(result):
         log.write("[plasmidfinder] already completed\n")
@@ -163,7 +171,7 @@ def run_plasmidfinder(plasmid, in_dir, log):
 
     os.makedirs(outdir, exist_ok=True)
 
-    cmd = f"plasmidfinder.py " f"-i {fasta} " f"-o {outdir}"
+    cmd = f"python -m plasmidfinder -i {fasta} -o {outdir} -j {outdir}/{plasmid}.json -p {database}"
 
     run_cmd(cmd, log, "plasmidfinder", plasmid)
 
@@ -242,22 +250,86 @@ def remove_overlapping(replicon_df: pd.DataFrame):
     return df_filtered
 
 
+def get_replicon_data(data, isolate_name):
+    replicon_list = []
+    if data == {}:
+        replicon_list = [
+            {
+                "isolate_key": isolate_name,
+                "contig_name": "-",
+                "plasmid": "No hit found",
+                "identity": "-",
+                "template_length": "-",
+                "coverage": "-",
+                "start": "-",
+                "end": "-",
+            }
+        ]
+    else:
+        contig_name = data["query_id"]
+        plasmid_name = data["name"]
+        identity = data["identity"]
+        template_length = data["ref_seq_length"]
+        coverage = data["coverage"]
+        start = data["query_start_pos"]
+        end = data["query_end_pos"]
+        # Store the extracted data in a dictionary
+        replicon_list += [
+            {
+                "isolate_key": isolate_name,
+                "contig_name": contig_name,
+                "plasmid": plasmid_name,
+                "identity": identity,
+                "template_length": template_length,
+                "coverage": coverage,
+                "start": start,
+                "end": end,
+            }
+        ]
+    return replicon_list
+
+
+def process_group(group):
+    group = group.sort_values(by="start").reset_index(drop=True)
+    indices_to_drop = set()
+
+    for i in range(1, len(group)):
+        if group.loc[i, "start"] <= group.loc[i - 1, "end"]:
+            if group.loc[i, "identity"] > group.loc[i - 1, "identity"]:
+                indices_to_drop.add(group.index[i - 1])
+            else:
+                indices_to_drop.add(group.index[i])
+
+    return group.drop(indices_to_drop)
+
+
+def remove_overlapping(replicon_df: pd.DataFrame):
+    # Sort the DataFrame by the 'start' column
+    replicon_df = replicon_df.sort_values(by="start").reset_index(drop=True)
+
+    # Apply the process_group function to each group
+    df_filtered = (
+        replicon_df.groupby("contig_name", group_keys=False, sort=False)
+        .apply(process_group, include_groups=False)
+        .reset_index(drop=True)
+    )
+    return df_filtered
+
+
 def parse_output(isolate_name):
     # List of input data.json files
-    file_name = f"output/{isolate_name}/plasmidfinder/data.json"
+    file_name = f"output/{isolate_name}/plasmidfinder/{isolate_name}.json"
 
     with open(file_name, "r") as file:
         data = json.load(file)
-        # Extract information from the JSON structure
-        # filename = data["plasmidfinder"]["user_input"]["filename(s)"][0]
 
+        # Extract information from the JSON structure
         replicons = []
-        for classification in data["plasmidfinder"]["results"].keys():
-            for group in data["plasmidfinder"]["results"][classification].keys():
-                replicons += get_replicon_data(
-                    data["plasmidfinder"]["results"][classification][group],
-                    isolate_name,
-                )
+        for classification in data["seq_regions"].keys():
+            replicons += get_replicon_data(
+                data["seq_regions"][classification],
+                isolate_name,
+            )
 
         # Remove all No hits
         final_replicon_dict = [x for x in replicons if x["plasmid"] != "No hit found"]
@@ -273,13 +345,13 @@ def parse_output(isolate_name):
                     "template_length": "-",
                     "coverage": "-",
                     "position": "-",
-                    "note": "-",
                 }
             )
 
         replicon_df = pd.DataFrame(final_replicon_dict)
         if len(replicon_df["plasmid"].values) >= 2:
             replicon_df = remove_overlapping(replicon_df)
+
         # Create an output file for this input file
         output_file_name = (
             f"output/{isolate_name}/plasmidfinder/{isolate_name}_replicon.csv"
@@ -479,38 +551,6 @@ def correct_names(df_in: pd.DataFrame) -> pd.DataFrame:
 
     df["amr"] = df["amr"].apply(correct_values)
     return df
-
-
-def get_carbapenemases(df: pd.DataFrame, gene_col: str) -> list[str]:
-    """
-    Extract carbapenemase genes from a given DataFrame column.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        DataFrame containing gene information.
-    gene_col : str
-        Name of the column in `df` that contains gene data.
-
-    Returns
-    -------
-    List[str]
-        List of comma-separated carbapenemase alleles for each row.
-    """
-    # Load reference carbapenemase alleles
-    carba_alleles_df = pd.read_csv("data/bldb_carbapenemases.csv", sep=";")
-    carba_alleles = set(
-        carba_alleles_df["NAME"].dropna().tolist()
-        + carba_alleles_df["blaNAME"].dropna().tolist()
-    )
-
-    # Ensure gene column is safe to process
-    genes = df[gene_col].fillna("-").astype(str).str.split(",")
-
-    # Extract matching carbapenemase alleles
-    return [
-        ",".join([g for g in gene_list if g in carba_alleles]) for gene_list in genes
-    ]
 
 
 if __name__ == "__main__":

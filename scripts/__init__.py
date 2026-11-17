@@ -1,1 +1,3 @@
-__version__ = 1.0
+"""PlasmidNL Typing"""
+
+__version__ = "1.0.1"

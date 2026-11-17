@@ -23,7 +23,7 @@ def process_plasmid(
             # First run all the tools
             tf.run_plasmidfinder(plasmid, in_dir, log)
             tf.run_mob_suite(plasmid, in_dir, log)
-            tf.run_mge_cluster(plasmid, in_dir, log, custom_scheme)
+            # tf.run_mge_cluster(plasmid, in_dir, log, custom_scheme)
             rp.set_up_resfinder(plasmid, in_dir, log)
             rp.set_up_amrfinder(plasmid, in_dir, log)
             if card:

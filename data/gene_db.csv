@@ -54,8 +54,9 @@ Aba gyrA;enoxacin,ciprofloxacin,levofloxacin,moxifloxacin,gatifloxacin,lomefloxa
 Acinetobacter baumannii AbaQ;;quinolone;CARD;AMR;Aba AbaQ
 Acinetobacter baumannii AmvA;erythromycin,acriflavine;macrolide;CARD;AMR;Aba AmvA
 Acinetobacter baumannii parC conferring resistance to fluoroquinolones;;quinolone;CARD;AMR;Aba parC
-AcrE;;tetracycline,beta-lactam,cephalosporin,phenicol,rifamycin, glycylcycline,fluoroquinolone;CARD;AMR;AcrE
-AcrS;;tetracycline,beta-lactam,cephalosporin,phenicol,rifamycin, glycylcycline,fluoroquinolone;CARD;AMR;AcrS
+AcrE;;tetracycline,beta-lactam,beta-lactam,amphenicol,rifamycin, glycylcycline,quinolone;CARD;AMR;AcrE
+AcrF;;tetracycline,beta-lactam,beta-lactam,amphenicol,rifamycin, glycylcycline,quinolone;CARD;AMR;AcrF
+AcrS;;tetracycline,beta-lactam,beta-lactam,amphenicol,rifamycin, glycylcycline,quinolone;CARD;AMR;AcrS
 ArnT;colistin A,colistin B;polymyxin;CARD;AMR;ArnT
 BRP(MBL);bleomycin,bleomycinic acid,bleomycin A2,bleomycin B2;glycopeptide;CARD;AMR;BRP(MBL)
 CARB-16;-;beta-lactam;CARD;AMR;CARB-16
@@ -110,17 +111,17 @@ Eco gyrA;enoxacin,ciprofloxacin,levofloxacin,moxifloxacin,gatifloxacin,lomefloxa
 Eco mdfA;tetracycline,benzalkonium chloride;tetracycline;CARD;AMR;Eco mdfA
 Eco soxR;tigecycline,ciprofloxacin,tetracycline,rifampin,chloramphenicol,ampicillin,nalidixic acid,norfloxacin,cefalotin,triclosan;quinolone,beta-lactam,tetracycline,rifamycin,amphenicol;CARD;AMR;Eco soxR
 Eco soxS;tigecycline,ciprofloxacin,tetracycline,rifampin,chloramphenicol,ampicillin,norfloxacin,cefalotin,triclosan,enrofloxacin;amphenicol,beta-lactam,quinolone,rifamycin,tetracycline;CARD;AMR;Eco soxS
-Enterobacter cloacae acrA;tetracycline,beta-lactam,cephalosporin,phenicol,rifamycin, glycylcycline,fluoroquinolone;tetracycline,beta-lactam,cephalosporin,phenicol,rifamycin, glycylcycline,fluoroquinolone;CARD;AMR;Ecl acrA
+Enterobacter cloacae acrA;tetracycline,beta-lactam,cephalosporin,phenicol,rifamycin, glycylcycline,fluoroquinolone;tetracycline,beta-lactam,beta-lactam,amphenicol,rifamycin, glycylcycline,quinolone;CARD;AMR;Ecl acrA
 Enterococcus faecalis chloramphenicol acetyltransferase;chloramphenicol;amphenicol;CARD;AMR;Efa chloramphenicol acetyltransferase
 Enterococcus faecium chloramphenicol acetyltransferase;chloramphenicol;amphenicol;CARD;AMR;Efa chloramphenicol acetyltransferase
 EreA;erythromycin,roxithromycin,clarithromycin;macrolide;CARD;AMR;EreA
 EreA2;erythromycin;macrolide;CARD;AMR;EreA2
 EreB;erythromycin,roxithromycin,clarithromycin,azithromycin;macrolide;CARD;AMR;EreB
-Erm(42);erythromycin,clindamycin;lincosamide,macrolide,streptogramin b;CARD;AMR;erm(42)
-ErmA;erythromycin,roxithromycin,lincomycin,telithromycin,clarithromycin,clindamycin,tylosin,spiramycin,azithromycin,dirithromycin,pristinamycin IA,quinupristin,virginiamycin M1,madumycin II,griseoviridin,dalfopristin,pristinamycin IB,virginiamycin S2,pristinamycin IC,vernamycin C,patricin A,patricin B,ostreogrycin B3,oleandomycin;lincosamide,macrolide,streptogramin a,streptogramin b;CARD;AMR;ErmA
-ErmB;erythromycin,roxithromycin,lincomycin,telithromycin,clarithromycin,clindamycin,tylosin,spiramycin,azithromycin,dirithromycin,pristinamycin IA,quinupristin,virginiamycin M1,madumycin II,griseoviridin,dalfopristin,pristinamycin IB,virginiamycin S2,pristinamycin IC,vernamycin C,patricin A,patricin B,ostreogrycin B3,oleandomycin;lincosamide,macrolide,streptogramin a,streptogramin b;CARD;AMR;ErmB
-ErmC;erythromycin,roxithromycin,lincomycin,telithromycin,clarithromycin,clindamycin,tylosin,spiramycin,azithromycin,dirithromycin,pristinamycin IA,quinupristin,virginiamycin M1,madumycin II,griseoviridin,dalfopristin,pristinamycin IB,virginiamycin S2,pristinamycin IC,vernamycin C,patricin A,patricin B,ostreogrycin B3,oleandomycin;lincosamide,macrolide,streptogramin a,streptogramin b;CARD;AMR;ErmC
-ErmT;erythromycin,roxithromycin,lincomycin,telithromycin,clarithromycin,clindamycin,tylosin,spiramycin,azithromycin,dirithromycin,pristinamycin IA,quinupristin,virginiamycin M1,madumycin II,griseoviridin,dalfopristin,pristinamycin IB,virginiamycin S2,pristinamycin IC,vernamycin C,patricin A,patricin B,ostreogrycin B3,oleandomycin;lincosamide,macrolide,streptogramin a,streptogramin b;CARD;AMR;ErmT
+Erm(42);erythromycin,clindamycin;lincosamide,macrolide,streptogramin;CARD;AMR;erm(42)
+ErmA;erythromycin,roxithromycin,lincomycin,telithromycin,clarithromycin,clindamycin,tylosin,spiramycin,azithromycin,dirithromycin,pristinamycin IA,quinupristin,virginiamycin M1,madumycin II,griseoviridin,dalfopristin,pristinamycin IB,virginiamycin S2,pristinamycin IC,vernamycin C,patricin A,patricin B,ostreogrycin B3,oleandomycin;lincosamide,macrolide,streptogramin,streptogramin;CARD;AMR;ErmA
+ErmB;erythromycin,roxithromycin,lincomycin,telithromycin,clarithromycin,clindamycin,tylosin,spiramycin,azithromycin,dirithromycin,pristinamycin IA,quinupristin,virginiamycin M1,madumycin II,griseoviridin,dalfopristin,pristinamycin IB,virginiamycin S2,pristinamycin IC,vernamycin C,patricin A,patricin B,ostreogrycin B3,oleandomycin;lincosamide,macrolide,streptogramin,streptogramin;CARD;AMR;ErmB
+ErmC;erythromycin,roxithromycin,lincomycin,telithromycin,clarithromycin,clindamycin,tylosin,spiramycin,azithromycin,dirithromycin,pristinamycin IA,quinupristin,virginiamycin M1,madumycin II,griseoviridin,dalfopristin,pristinamycin IB,virginiamycin S2,pristinamycin IC,vernamycin C,patricin A,patricin B,ostreogrycin B3,oleandomycin;lincosamide,macrolide,streptogramin,streptogramin;CARD;AMR;ErmC
+ErmT;erythromycin,roxithromycin,lincomycin,telithromycin,clarithromycin,clindamycin,tylosin,spiramycin,azithromycin,dirithromycin,pristinamycin IA,quinupristin,virginiamycin M1,madumycin II,griseoviridin,dalfopristin,pristinamycin IB,virginiamycin S2,pristinamycin IC,vernamycin C,patricin A,patricin B,ostreogrycin B3,oleandomycin;lincosamide,macrolide,streptogramin,streptogramin;CARD;AMR;ErmT
 Escherichia coli AcrAB-TolC with AcrR mutation;tigecycline,ciprofloxacin,tetracycline,ceftazidime,rifampin,chloramphenicol,ampicillin,cefalotin,triclosan;quinolone,beta-lactam,tetracycline,rifamycin,amphenicol;CARD;AMR;Eco AcrAB-TolC AcrR
 Escherichia coli AcrAB-TolC with AcrR mutation conferring resistance to ciprofloxacin;ciprofloxacin,tetracycline,ceftazidime;quinolone,beta-lactam,tetracycline,rifamycin,amphenicol;CARD;AMR;Eco AcrAB-TolC AcrR
 Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline;tigecycline,ciprofloxacin,tetracycline,rifampin,chloramphenicol,ampicillin,cefalotin,triclosan;quinolone,beta-lactam,tetracycline,rifamycin,amphenicol;CARD;AMR;Eco AcrAB-TolC MarR 
@@ -132,7 +133,7 @@ Escherichia coli ampC beta-lactamase;penicillin;beta-lactam;CARD;AMR;Eco ampC be
 Escherichia coli cyaA with mutation conferring resistance to fosfomycin;fosfomycin;fosfomycin;CARD;AMR;Eco cyaA
 Escherichia coli emrE;;macrolide;CARD;AMR;Eco emrE
 Escherichia coli gyrA conferring resistance to fluoroquinolones;enoxacin,ciprofloxacin,levofloxacin,moxifloxacin,gatifloxacin,lomefloxacin,nalidixic acid,norfloxacin,ofloxacin,trovafloxacin,grepafloxacin,sparfloxacin,pefloxacin;quinolone;CARD;AMR;Eco gyrA
-Escherichia coli mdfA;;phenicol,tetracycline;CARD;AMR;Eco mdfA
+Escherichia coli mdfA;;amphenicol,tetracycline;CARD;AMR;Eco mdfA
 Escherichia coli soxR with mutation conferring antibiotic resistance;tigecycline,ciprofloxacin,tetracycline,rifampin,chloramphenicol,ampicillin,nalidixic acid,norfloxacin,cefalotin,triclosan;quinolone,beta-lactam,tetracycline,rifamycin,amphenicol;CARD;AMR;Eco soxR
 Escherichia coli soxS with mutation conferring antibiotic resistance;tigecycline,ciprofloxacin,tetracycline,rifampin,chloramphenicol,ampicillin,norfloxacin,cefalotin,triclosan,enrofloxacin;amphenicol,beta-lactam,quinolone,rifamycin,tetracycline;CARD;AMR;Eco soxS
 FRI-1;-;beta-lactam;CARD;AMR;blaFRI-1
@@ -203,8 +204,8 @@ NDM-40;-;beta-lactam;CARD;AMR;blaNDM-40
 NDM-5;cefoxitin,ceftazidime,ertapenem;beta-lactam;CARD;AMR;blaNDM-5
 NDM-6;-;beta-lactam;CARD;AMR;blaNDM-6
 NDM-7;-;beta-lactam;CARD;AMR;blaNDM-7
-NarA;;Ionophore;resfinder;AMR;NarA
-NarB;;Ionophore;resfinder;AMR;NarB
+NarA;;ionophore;resfinder;AMR;NarA
+NarB;;ionophore;resfinder;AMR;NarB
 NmcR;cefoxitin,cefazolin,ampicillin;beta-lactam;CARD;AMR;NmcR
 OKP-A-3;-;beta-lactam;CARD;AMR;blaOKP-A-3
 OXA-1;cloxacillin,oxacillin,amoxicillin,piperacillin,ampicillin,cefalotin;beta-lactam;CARD;AMR;blaOXA-1
@@ -407,10 +408,10 @@ aadD1;-;aminoglycoside;AMRFinderPlus;AMR;aadD1
 aap;-;virulence;AMRFinderPlus;VIRULENCE;aap
 aar;-;virulence;AMRFinderPlus;VIRULENCE;aar
 aatA;-;virulence;AMRFinderPlus;VIRULENCE;aatA
-acrB;tigecycline,tetracycline,rifampin,chloramphenicol,ampicillin,cefalotin,triclosan;beta-lactam,phenicol,quinolone,rifamycin,tetracycline;CARD;AMR;acrB
+acrB;tigecycline,tetracycline,rifampin,chloramphenicol,ampicillin,cefalotin,triclosan;beta-lactam,amphenicol,quinolone,rifamycin,tetracycline;CARD;AMR;acrB
 acrD;-;aminoglycoside;CARD;AMR;acrD
-acrF;;beta-lactam,cephalosporin,quinolone;CARD;AMR;acrF
-adeC;;tetracycline,glycylcyclines;CARD;AMR;adeC
+acrF;;beta-lactam,beta-lactam,quinolone;CARD;AMR;acrF
+adeC;;tetracycline,glycylcycline;CARD;AMR;adeC
 adeF;tetracycline;quinolone,tetracycline;CARD;AMR;adeF
 adeI;-;efflux;CARD;AMR;adeI
 adeJ;-;efflux;CARD;AMR;adeJ
@@ -660,6 +661,8 @@ blaOXA-9;Amoxicillin,Ampicillin;beta-lactam;resfinder;AMR;blaOXA-9
 blaOXA-917;-;beta-lactam;resfinder;AMR;blaOXA-917
 blaOXA-97;-;beta-lactam;resfinder;AMR;blaOXA-97
 blaOXY-2-1;;beta-lactam;resfinder;AMR;blaOXY-2-1
+blaOXY-2-16;;beta-lactam;resfinder;AMR;blaOXY-2-16
+blaOXY-2-8;;beta-lactam;resfinder;AMR;blaOXY-2-8
 blaPAC;-;beta-lactam;resfinder;AMR;blaPAC
 blaPC1;-;beta-lactam;AMRFinderPlus;AMR;blaPC1
 blaPDC-16;-;beta-lactam;resfinder;AMR;blaPDC-16
@@ -800,11 +803,11 @@ cat;Chloramphenicol;amphenicol;resfinder;AMR;cat
 cat(pC194);Chloramphenicol;amphenicol;resfinder;AMR;cat(pC194)
 cat(pC221);Chloramphenicol;amphenicol;resfinder;AMR;cat(pC221)
 cat(pC233);Chloramphenicol;amphenicol;resfinder;AMR;cat(pC233)
-catA;-;phenicol;AMRFinderPlus;AMR;catA
+catA;-;amphenicol;AMRFinderPlus;AMR;catA
 catA1;Chloramphenicol;amphenicol;resfinder;AMR;catA1
 catA2;Chloramphenicol;amphenicol;resfinder;AMR;catA2
 catA8;chloramphenicol;amphenicol;CARD;AMR;catA8
-catB;-;phenicol;AMRFinderPlus;AMR;catB
+catB;-;amphenicol;AMRFinderPlus;AMR;catB
 catB2;Chloramphenicol;amphenicol;resfinder;AMR;catB2
 catB3;Chloramphenicol;amphenicol;resfinder;AMR;catB3
 catB7;Chloramphenicol;amphenicol;resfinder;AMR;catB7
@@ -812,29 +815,29 @@ catB8;Chloramphenicol;amphenicol;resfinder;AMR;catB8
 catI;azidamfenicol,chloramphenicol,thiamphenicol;amphenicol;CARD;AMR;catI
 catII from Eco K-12;chloramphenicol;amphenicol;CARD;AMR;catII from Eco K-12
 cdtB;-;virulence;AMRFinderPlus;VIRULENCE;cdtB
-cfr;Chloramphenicol,Florfenicol,Clindamycin,Lincomycin,Linezolid,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;amphenicol,lincosamide,oxazolidinone,pleuromutilin,streptogramin a;resfinder;AMR;cfr
-cfrA;lincomycin,clindamycin,azidamfenicol,chloramphenicol,thiamphenicol,virginiamycin M1,tiamulin,madumycin II,griseoviridin,dalfopristin;amphenicol,lincosamide,oxazolidinone,pleuromutilin,streptogramin b;CARD;AMR;cfrA
+cfr;Chloramphenicol,Florfenicol,Clindamycin,Lincomycin,Linezolid,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;amphenicol,lincosamide,oxazolidinone,pleuromutilin,streptogramin;resfinder;AMR;cfr
+cfrA;lincomycin,clindamycin,azidamfenicol,chloramphenicol,thiamphenicol,virginiamycin M1,tiamulin,madumycin II,griseoviridin,dalfopristin;amphenicol,lincosamide,oxazolidinone,pleuromutilin,streptogramin;CARD;AMR;cfrA
 cfxA;-;beta-lactam;resfinder;AMR;cfxA
 cfxA3;-;beta-lactam;resfinder;AMR;cfxA3
 cfxA4;-;beta-lactam;resfinder;AMR;cfxA4
 cfxA5;-;beta-lactam;resfinder;AMR;cfxA5
 chrA;-;chromate;AMRFinderPlus;METAL;chrA
 clpK;-;heat;AMRFinderPlus;STRESS;clpK
-cmeA;;cephalosporin,macrolide,quinolone,steroid;CARD;AMR;cmeA
-cmeC;;cephalosporin,macrolide,quinolone,steroid;CARD;AMR;cmeC
-cmeR;;cephalosporin,macrolide,quinolone,steroid;CARD;AMR;cmeR
+cmeA;;beta-lactam,macrolide,quinolone,steroid;CARD;AMR;cmeA
+cmeC;;beta-lactam,macrolide,quinolone,steroid;CARD;AMR;cmeC
+cmeR;;beta-lactam,macrolide,quinolone,steroid;CARD;AMR;cmeR
 cml;Chloramphenicol;amphenicol;resfinder;AMR;cml
-cmlA;-;phenicol;AMRFinderPlus;AMR;cmlA
+cmlA;-;amphenicol;AMRFinderPlus;AMR;cmlA
 cmlA1;Chloramphenicol;amphenicol;resfinder;AMR;cmlA1
-cmlA4;chloramphenicol;phenicol;CARD;AMR;cmlA4
-cmlA4;-;phenicol;AMRFinderPlus;AMR;cmlA4
-cmlA5;chloramphenicol;phenicol;CARD;AMR;cmlA5
-cmlA5;-;phenicol;AMRFinderPlus;AMR;cmlA5
-cmlA6;chloramphenicol;phenicol;CARD;AMR;cmlA6
-cmlA6;-;phenicol;AMRFinderPlus;AMR;cmlA6
+cmlA4;chloramphenicol;amphenicol;CARD;AMR;cmlA4
+cmlA4;-;amphenicol;AMRFinderPlus;AMR;cmlA4
+cmlA5;chloramphenicol;amphenicol;CARD;AMR;cmlA5
+cmlA5;-;amphenicol;AMRFinderPlus;AMR;cmlA5
+cmlA6;chloramphenicol;amphenicol;CARD;AMR;cmlA6
+cmlA6;-;amphenicol;AMRFinderPlus;AMR;cmlA6
 cmlA9;chloramphenicol;amphenicol;CARD;AMR;cmlA9
-cmlB;-;phenicol;AMRFinderPlus;AMR;cmlB
-cmlB;chloramphenicol;phenicol;CARD;AMR;cmlB
+cmlB;-;amphenicol;AMRFinderPlus;AMR;cmlB
+cmlB;chloramphenicol;amphenicol;CARD;AMR;cmlB
 cmlB1;Chloramphenicol;amphenicol;resfinder;AMR;cmlB1
 cmx;Chloramphenicol;amphenicol;resfinder;AMR;cmx
 cnf2;-;virulence;AMRFinderPlus;VIRULENCE;cnf2
@@ -895,19 +898,19 @@ epeA;-;virulence;AMRFinderPlus;VIRULENCE;epeA
 eptA;polymyxin B;peptide;CARD;AMR;eptA
 ere(A);Erythromycin;macrolide;resfinder;AMR;ere(A)
 ere(B);Erythromycin,Azithromycin;macrolide;resfinder;AMR;ere(B)
-erm(42);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin b;resfinder;AMR;erm(42)
-erm(49);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin b;resfinder;AMR;erm(49)
-erm(A);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin b;resfinder;AMR;erm(A)
-erm(B);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin b;resfinder;AMR;erm(B)
-erm(C);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin b;resfinder;AMR;erm(C)
-erm(T);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin b;resfinder;AMR;erm(T)
+erm(42);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin;resfinder;AMR;erm(42)
+erm(49);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin;resfinder;AMR;erm(49)
+erm(A);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin;resfinder;AMR;erm(A)
+erm(B);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin;resfinder;AMR;erm(B)
+erm(C);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin;resfinder;AMR;erm(C)
+erm(T);Erythromycin,Lincomycin,Clindamycin,Quinupristin,Pristinamycin IA,Virginiamycin S;lincosamide,macrolide,streptogramin;resfinder;AMR;erm(T)
 espP;-;virulence;AMRFinderPlus;VIRULENCE;espP
 espX1;-;virulence;AMRFinderPlus;VIRULENCE;espX1
 estT;;macrolide;CARD;AMR;estT
 etb;-;virulence;AMRFinderPlus;VIRULENCE;etb
 etpD;-;virulence;AMRFinderPlus;VIRULENCE;etpD
-evgA;erythromycin,cloxacillin,tetracycline,oxacillin,norfloxacin;macrolide,fluoroquinolone,tetracycline;CARD;AMR;evgA
-evgS;erythromycin,cloxacillin,tetracycline,oxacillin,norfloxacin;macrolide,fluoroquinolone,tetracycline;CARD;AMR;evgS
+evgA;erythromycin,cloxacillin,tetracycline,oxacillin,norfloxacin;macrolide,quinolone,tetracycline;CARD;AMR;evgA
+evgS;erythromycin,cloxacillin,tetracycline,oxacillin,norfloxacin;macrolide,quinolone,tetracycline;CARD;AMR;evgS
 f17a;-;virulence;AMRFinderPlus;VIRULENCE;f17a
 f17g;-;virulence;AMRFinderPlus;VIRULENCE;f17g
 fdeC;-;virulence;AMRFinderPlus;VIRULENCE;fdeC
@@ -917,13 +920,14 @@ fexA;Chloramphenicol,Florfenicol;amphenicol;resfinder;AMR;fexA
 fexB;Chloramphenicol,Florfenicol;amphenicol;resfinder;AMR;fexB
 fieF;-;metal unknown;AMRFinderPlus;METAL;fieF
 floR;Chloramphenicol,Florfenicol;amphenicol;resfinder;AMR;floR
-floR2;-;phenicol;AMRFinderPlus;AMR;floR2
+floR2;-;amphenicol;AMRFinderPlus;AMR;floR2
 fosA;Fosfomycin;fosfomycin;resfinder;AMR;fosA
 fosA10;-;fosfomycin;AMRFinderPlus;AMR;fosA10
 fosA3;Fosfomycin;fosfomycin;resfinder;AMR;fosA3
 fosA4;Fosfomycin;fosfomycin;resfinder;AMR;fosA4
-fosA5;ciprofloxacin,gentamicin;aminoglycoside,fluoroquinolone,fosfomycin;CARD;AMR;fosA5
+fosA5;ciprofloxacin,gentamicin;aminoglycoside,quinolone,fosfomycin;CARD;AMR;fosA5
 fosA6;;fosfomycin;CARD;AMR;fosA6
+fosA7;;fosfomycin;CARD;AMR;fosA7
 fosB;Fosfomycin;fosfomycin;resfinder;AMR;fosB
 fosB1;-;fosfomycin;AMRFinderPlus;AMR;fosB1
 fosL1;Fosfomycin;fosfomycin;resfinder;AMR;fosL1
@@ -965,8 +969,8 @@ lnuA;lincomycin,pirlimycin;lincosamide;CARD;AMR;lnuA
 lnuB;lincomycin,clindamycin;lincosamide;CARD;AMR;lnuB
 lnuF;lincomycin,clindamycin;lincosamide;CARD;AMR;lnuF
 lnuG;lincomycin;lincosamide;CARD;AMR;lnuG
-lsa(A);Lincomycin,Clindamycin,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;lincosamide,pleuromutilin,streptogramin a;resfinder;AMR;lsa(A)
-lsa(E);Lincomycin,Clindamycin,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;lincosamide,pleuromutilin,streptogramin a;resfinder;AMR;lsa(E)
+lsa(A);Lincomycin,Clindamycin,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;lincosamide,pleuromutilin,streptogramin;resfinder;AMR;lsa(A)
+lsa(E);Lincomycin,Clindamycin,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;lincosamide,pleuromutilin,streptogramin;resfinder;AMR;lsa(E)
 lsaE;lincomycin,pleuromutilin;lincosamide,pleuromutilin;CARD;AMR;lsaE
 marA;tigecycline,tetracycline,rifampin,chloramphenicol,ampicillin,cefalotin,triclosan;amphenicol,beta-lactam,quinolone,rifamycin,tetracycline;CARD;AMR;marA
 mchB;-;virulence;AMRFinderPlus;VIRULENCE;mchB
@@ -990,9 +994,9 @@ mcr-9;-;polymyxin;AMRFinderPlus;AMR;mcr-9
 mcr-9.1;-;polymyxin;AMRFinderPlus;AMR;mcr-9.1
 mcr-9.2;-;polymyxin;AMRFinderPlus;AMR;mcr-9.2
 mdeA;ciprofloxacin,acriflavine,kanamycin A,tetracycline,oxacillin,ampicillin,nalidixic acid;aminoglycoside,beta-lactam,quinolone;CARD;AMR;mdeA
-mdsA;;phenicol,beta-lactam;CARD;AMR;mdsA
-mdsB;;phenicol,beta-lactam;CARD;AMR;mdsB
-mdsC;;phenicol,beta-lactam;CARD;AMR;mdsC
+mdsA;;amphenicol,beta-lactam;CARD;AMR;mdsA
+mdsB;;amphenicol,beta-lactam;CARD;AMR;mdsB
+mdsC;;amphenicol,beta-lactam;CARD;AMR;mdsC
 mdtA;novobiocin;aminocoumarin;CARD;AMR;mdtA
 mdtB;novobiocin;aminocoumarin;CARD;AMR;mdtB
 mdtC;novobiocin;aminocoumarin;CARD;AMR;mdtC
@@ -1043,9 +1047,9 @@ mphE;erythromycin;macrolide;CARD;AMR;mphE
 mphF;erythromycin,roxithromycin,clarithromycin,tylosin,azithromycin;macrolide;CARD;AMR;mphF
 mphG;erythromycin,clarithromycin,azithromycin;macrolide;CARD;AMR;mphG
 msbA;metronidazole;nitroimidazole;CARD;AMR;msbA
-msr(A);Erythromycin,Azithromycin,Telithromycin,Quinupristin,Pristinamycin IA,Virginiamycin S;macrolide,streptogramin b;resfinder;AMR;msr(A)
-msr(E);Erythromycin,Azithromycin,Quinupristin,Pristinamycin IA,Virginiamycin S;macrolide,streptogramin b;resfinder;AMR;msr(E)
-msrA;erythromycin,quinupristin;marolide,streptogramin b;CARD;AMR;msrA
+msr(A);Erythromycin,Azithromycin,Telithromycin,Quinupristin,Pristinamycin IA,Virginiamycin S;macrolide,streptogramin;resfinder;AMR;msr(A)
+msr(E);Erythromycin,Azithromycin,Quinupristin,Pristinamycin IA,Virginiamycin S;macrolide,streptogramin;resfinder;AMR;msr(E)
+msrA;erythromycin,quinupristin;marolide,streptogramin;CARD;AMR;msrA
 msrE;erythromycin;macrolide;CARD;AMR;msrE
 mupA;Mupirocin;pseudomonic acid;resfinder;AMR;mupA
 nalC;-;efflux;CARD;AMR;nalC
@@ -1061,11 +1065,11 @@ nirD;-;nickel;AMRFinderPlus;METAL;nirD
 nleA;-;virulence;AMRFinderPlus;VIRULENCE;nleA
 norB;;efflux;CARD;AMR;norB
 norC;ciprofloxacin,acriflavine,norfloxacin;quinolone;CARD;AMR;norC
-oqxA;-;phenicol,quinolone;AMRFinderPlus;AMR;oqxA
+oqxA;-;amphenicol,quinolone;AMRFinderPlus;AMR;oqxA
 oqxA;tigecycline,ciprofloxacin,nitrofurantoin,trimethoprim;amphenicol,folate pathway antagonist,quinolone;CARD;AMR;OqxA
 oqxA2;-;efflux;CARD;AMR;oqxA2
 oqxB;tigecycline,ciprofloxacin,nitrofurantoin,trimethoprim;amphenicol,folate pathway antagonist,quinolone;CARD;AMR;OqxB
-oqxB19;-;phenicol,quinolone;AMRFinderPlus;AMR;oqxB19
+oqxB19;-;amphenicol,quinolone;AMRFinderPlus;AMR;oqxB19
 oqxB29;-;efflux;CARD;AMR;oqxB29
 oqxB5;;efflux;CARD;AMR;oqxB5
 oqxB9;;efflux;CARD;AMR;oqxB9
@@ -1127,7 +1131,7 @@ qnrS4;;quinolone;resfinder;AMR;qnrS4
 qnrVC1;Ciprofloxacin;quinolone;resfinder;AMR;qnrVC1
 qnrVC4;Ciprofloxacin;quinolone;resfinder;AMR;qnrVC4
 qnrVC6;Ciprofloxacin;quinolone;resfinder;AMR;qnrVC6
-ramA;;tetracycline,beta-lactam,quinolone,rifamycin,phenicol,;CARD;AMR;ramA
+ramA;;tetracycline,beta-lactam,quinolone,rifamycin,amphenicol,;CARD;AMR;ramA
 rmpA;-;virulence;AMRFinderPlus;VIRULENCE;rmpA
 rmpA2;-;virulence;AMRFinderPlus;VIRULENCE;rmpA2
 rmpC;-;virulence;AMRFinderPlus;VIRULENCE;rmpC
@@ -1216,11 +1220,16 @@ vanH gene in vanB cluster;vancomycin;glycopeptide;CARD;AMR;vanH gene in vanB clu
 vanW gene in vanG cluster;vancomycin;glycopeptide;CARD;AMR;vanW gene in vanG cluster
 vanY gene in vanB cluster;vancomycin;glycopeptide;CARD;AMR;vanY gene in vanB cluster
 vga(A);-;lincosamide;AMRFinderPlus;AMR;vga(A)
-vga(A)LC;Lincomycin,Clindamycin,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;lincosamide,pleuromutilin,streptogramin a;resfinder;AMR;vga(A)LC
-vga(A)V;Lincomycin,Clindamycin,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;lincosamide,pleuromutilin,streptogramin a;resfinder;AMR;vga(A)V
+vga(A)LC;Lincomycin,Clindamycin,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;lincosamide,pleuromutilin,streptogramin;resfinder;AMR;vga(A)LC
+vga(A)V;Lincomycin,Clindamycin,Dalfopristin,Pristinamycin IIA,Virginiamycin M,Tiamulin;lincosamide,pleuromutilin,streptogramin;resfinder;AMR;vga(A)V
 vga(G);;lincosamide;AMRFinderPlus;AMR;vga(G)
 ybtP;-;virulence;AMRFinderPlus;VIRULENCE;ybtP
 ybtQ;-;virulence;AMRFinderPlus;VIRULENCE;ybtQ
 yfdX1;-;heat;AMRFinderPlus;STRESS;yfdX1
 yfdX2;-;heat;AMRFinderPlus;STRESS;yfdX2
 ykkC;;efflux;CARD;AMR;ykkC
+EC-14;Cephalosporin;beta-lactam;CARD;AMR;blaEC-14
+EC-5;Cephalosporin;beta-lactam;CARD;AMR;blaEC-5
+EC-8;Cephalosporin;beta-lactam;CARD;AMR;blaEC-8
+and ceftazidime;;;CARD;AMR;
+tetracycline;;;CARD;AMR;

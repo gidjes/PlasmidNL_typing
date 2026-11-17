@@ -140,7 +140,6 @@ def main():
         final_df, "metal", "metal_classes"
     )
     final_df = typing_functions.correct_names(final_df)
-    final_df["carba_alleles"] = typing_functions.get_carbapenemases(final_df, "amr")
 
     final_df["AMR_plasmid"] = [
         0 if (x == "") or (pd.isna(x)) else 1 for x in final_df["amr"]
@@ -160,7 +159,7 @@ def main():
         "amr",
         "amr_classes",
         "AMR_plasmid",
-        "carba_allele",
+        "carba_alleles",
         "CP_plasmid",
         "virulence",
         "metal",

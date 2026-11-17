@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plasmidnl-typing"
+dynamic = ["version"]
+description = "Pipeline providing functional annotations for plasmids"
+authors = [
+    { name = "Gijs Teunis", email = "gijs.teunis@rivm.nl" }
+]
+requires-python = "==3.10.20"
+
+dependencies = [
+    "numpy==2.2.6",
+    "pandas==2.3.3",
+    "plasmidfinder==3.0.3",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "scripts.__version__"}
+
+[project.scripts]
+type_plasmids = "scripts.main:main"

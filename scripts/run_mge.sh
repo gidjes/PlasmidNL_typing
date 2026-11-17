@@ -13,9 +13,9 @@ echo ${in_dir}/${1}.fasta > output/${1}/mge_cluster/${1}_path.txt
 
 # Determine scheme directory
 if [ "$use_custom" = "1" ]; then
-    model_folder="data/mge_model_custom"
+    model_folder="data/mge_scheme_custom"
 else
-    model_folder="data/mge_model_CPO"
+    model_folder="data/mge_scheme_CPO"
 fi
 
 # Run mge-cluster
